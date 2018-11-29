@@ -50,7 +50,7 @@ export class SmeupMatrix {
     let thead = null;
     if (this.columns) {
       thead = this.columns.map(c => (
-        <th onClick={this.onSort.bind(this, c)}>{c.code}</th>
+        <th onClick={this.onSort.bind(this, c)}>{c.text}</th>
       ))
     }
 
@@ -61,10 +61,11 @@ export class SmeupMatrix {
         sortedRows = this.sortRows(this.rows);
       }
 
-      tbody = sortedRows.map(r => (
-        <tr>{this.columns.map(c => (
-          <td>{r.fields[c.code].smeupObject.codice}</td>
-        ))}</tr>
+      tbody = sortedRows.map((r) => (
+        <tr>{this.columns.map((c) => {
+          const slotName = `cell-${c.code}-${r.fields['ID'].smeupObject.codice}`;
+          return (<td><slot name={slotName}></slot></td>);
+        })}</tr>
       ))
     }
 

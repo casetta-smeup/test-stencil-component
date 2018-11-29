@@ -12,6 +12,31 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface SmeupMatCell {
+    'content': string;
+  }
+  interface SmeupMatCellAttributes extends StencilHTMLAttributes {
+    'content'?: string;
+  }
+
+  interface SmeupMatWrapper {
+    'columns': any[];
+    'rows': any[];
+  }
+  interface SmeupMatWrapperAttributes extends StencilHTMLAttributes {
+    'columns'?: any[];
+    'rows'?: any[];
+  }
+
+  interface SmeupMat {
+    'columns': any[];
+    'rows': any[];
+  }
+  interface SmeupMatAttributes extends StencilHTMLAttributes {
+    'columns'?: any[];
+    'rows'?: any[];
+  }
+
   interface MyComponent {
     /**
     * The first name
@@ -40,33 +65,34 @@ export namespace Components {
     */
     'middle'?: string;
   }
-
-  interface SmeupMat {
-    'columns': any[];
-    'rows': any[];
-  }
-  interface SmeupMatAttributes extends StencilHTMLAttributes {
-    'columns'?: any[];
-    'rows'?: any[];
-  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'SmeupMatCell': Components.SmeupMatCell;
+    'SmeupMatWrapper': Components.SmeupMatWrapper;
     'SmeupMat': Components.SmeupMat;
+    'MyComponent': Components.MyComponent;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'smeup-mat-cell': Components.SmeupMatCellAttributes;
+    'smeup-mat-wrapper': Components.SmeupMatWrapperAttributes;
     'smeup-mat': Components.SmeupMatAttributes;
+    'my-component': Components.MyComponentAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLSmeupMatCellElement extends Components.SmeupMatCell, HTMLStencilElement {}
+  var HTMLSmeupMatCellElement: {
+    prototype: HTMLSmeupMatCellElement;
+    new (): HTMLSmeupMatCellElement;
+  };
+
+  interface HTMLSmeupMatWrapperElement extends Components.SmeupMatWrapper, HTMLStencilElement {}
+  var HTMLSmeupMatWrapperElement: {
+    prototype: HTMLSmeupMatWrapperElement;
+    new (): HTMLSmeupMatWrapperElement;
   };
 
   interface HTMLSmeupMatElement extends Components.SmeupMat, HTMLStencilElement {}
@@ -75,14 +101,24 @@ declare global {
     new (): HTMLSmeupMatElement;
   };
 
+  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
+  var HTMLMyComponentElement: {
+    prototype: HTMLMyComponentElement;
+    new (): HTMLMyComponentElement;
+  };
+
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'smeup-mat-cell': HTMLSmeupMatCellElement
+    'smeup-mat-wrapper': HTMLSmeupMatWrapperElement
     'smeup-mat': HTMLSmeupMatElement
+    'my-component': HTMLMyComponentElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'smeup-mat-cell': HTMLSmeupMatCellElement;
+    'smeup-mat-wrapper': HTMLSmeupMatWrapperElement;
     'smeup-mat': HTMLSmeupMatElement;
+    'my-component': HTMLMyComponentElement;
   }
 
 
