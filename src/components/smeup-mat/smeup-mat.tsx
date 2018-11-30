@@ -10,18 +10,22 @@ export class SmeupMatrix {
 
   @Prop() rows: any[];
 
+  @Prop() sortable: boolean;
+
   @State() sort = {
     code: "",
     sortMode: ""
   };
 
   onSort(c) {
-    // switch sort
-    c.sortMode = c.sortMode === "A" ? "D" : "A";
+    if (this.sortable) {
+      // switch sort
+      c.sortMode = c.sortMode === "A" ? "D" : "A";
 
-    this.sort = {
-      code: c.code,
-      sortMode: c.sortMode
+      this.sort = {
+        code: c.code,
+        sortMode: c.sortMode
+      }
     }
   }
 
@@ -49,8 +53,10 @@ export class SmeupMatrix {
     // header
     let thead = null;
     if (this.columns) {
+      const className = this.sortable ? "sortable" : "";
+
       thead = this.columns.map(c => (
-        <th onClick={this.onSort.bind(this, c)}>{c.code}</th>
+        <th onClick={this.onSort.bind(this, c)} class={className}>{c.code}</th>
       ))
     }
 

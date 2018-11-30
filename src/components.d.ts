@@ -44,10 +44,12 @@ export namespace Components {
   interface SmeupMat {
     'columns': any[];
     'rows': any[];
+    'sortable': boolean;
   }
   interface SmeupMatAttributes extends StencilHTMLAttributes {
     'columns'?: any[];
     'rows'?: any[];
+    'sortable'?: boolean;
   }
 }
 
