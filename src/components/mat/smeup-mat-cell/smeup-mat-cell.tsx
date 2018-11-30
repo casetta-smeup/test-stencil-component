@@ -6,11 +6,15 @@ import { Component, Prop } from '@stencil/core';
   shadow: true
 })
 export class SmeupMatCell {
-  @Prop() content: string;
+  @Prop() column: any;
+
+  @Prop() row: any;
 
   render() {
+    const content = this.row.fields[this.column.code].smeupObject.codice;
+
     return (
-      <td>{this.content}</td>
+      <td>{content}</td>
     );
   }
 }

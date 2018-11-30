@@ -13,10 +13,12 @@ import '@stencil/core';
 export namespace Components {
 
   interface SmeupMatCell {
-    'content': string;
+    'column': any;
+    'row': any;
   }
   interface SmeupMatCellAttributes extends StencilHTMLAttributes {
-    'content'?: string;
+    'column'?: any;
+    'row'?: any;
   }
 
   interface SmeupMatWrapper {

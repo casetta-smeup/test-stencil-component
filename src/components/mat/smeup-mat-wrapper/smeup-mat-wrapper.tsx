@@ -16,9 +16,8 @@ export class SmeupMatWrapper {
       slotRows = this.rows.map((r) => {
         return this.columns.map((c) => {
           const slotName = `cell-${c.code}-${r.fields['ID'].smeupObject.codice}`;
-          const cellValue = r.fields[c.code].smeupObject.codice;
 
-          return (<span slot={slotName}>{cellValue}</span>);
+          return (<smeup-mat-cell slot={slotName} column={c} row={r}></smeup-mat-cell>);
         })
       })
     }
