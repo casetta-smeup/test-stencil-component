@@ -28,12 +28,14 @@
     </div>
 
     <div>
-        <label for="sort">Number of rows</label>
-        <input type="checkbox" name="sort" id="sort" onchange="toggleMatSort(event)">
-      </div>
+      <label for="sort">Enable sort</label>
+      <input type="checkbox" name="sort" id="sort" onchange="toggleMatSort(event)">
+    </div>
   </div>
 
-  <smeup-mat columns="" rows=""></smeup-mat>
+  <smeup-mat onCellClicked="console.log('test')"></smeup-mat>
+
+  <p id="label"></p>
 
   <script>
     function loadBigData() {
@@ -107,6 +109,16 @@
 
     mat.columns = data.columns;
     mat.rows = data.rows;
+
+    // add event listener for click events
+    mat.addEventListener("onCellClicked", (event) => {
+      const p = document.querySelector("#label");
+
+      const cj = JSON.stringify(event.detail.c);
+      const rj = JSON.stringify(event.detail.r);
+
+      p.innerHTML = `Hai cliccato sulla colonna ${cj} <br /> della riga ${rj}`;
+    })
   </script>
 </body>
 

@@ -1,4 +1,10 @@
-import { Component, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Prop,
+  State
+} from '@stencil/core';
 
 @Component({
   tag: 'smeup-mat',
@@ -11,6 +17,8 @@ export class SmeupMatrix {
   @Prop() rows: any[];
 
   @Prop() sortable: boolean;
+
+  @Event() onCellClicked: EventEmitter;
 
   @State() sort = {
     code: "",
@@ -49,6 +57,10 @@ export class SmeupMatrix {
     });
   }
 
+  onCellClickedHandler(c, r) {
+    this.onCellClicked.emit({c, r});
+  }
+
   render() {
     // header
     let thead = null;
@@ -69,7 +81,7 @@ export class SmeupMatrix {
 
       tbody = sortedRows.map(r => (
         <tr>{this.columns.map(c => (
-          <td>{r.fields[c.code].smeupObject.codice}</td>
+          <td onClick={this.onCellClickedHandler.bind(this, c, r)}>{r.fields[c.code].smeupObject.codice}</td>
         ))}</tr>
       ))
     }
