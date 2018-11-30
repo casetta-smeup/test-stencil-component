@@ -20,6 +20,10 @@ table {
 
   tbody {
     tr {
+      &.selected {
+        background: lightcoral;
+      }
+
       &:hover {
         background: #ccc;
       }

@@ -16,6 +16,8 @@ export class SmeupMatrix {
 
   @Prop() rows: any[];
 
+  @Prop() filterable: boolean;
+
   @Prop() sortable: boolean;
 
   @Event() onCellClicked: EventEmitter;
@@ -24,6 +26,8 @@ export class SmeupMatrix {
     code: "",
     sortMode: ""
   };
+
+  @State() hackzor = false;
 
   onSort(c) {
     if (this.sortable) {
@@ -58,18 +62,82 @@ export class SmeupMatrix {
   }
 
   onCellClickedHandler(c, r) {
-    this.onCellClicked.emit({c, r});
+    this.onCellClicked.emit({ c, r });
+
+    if (!r.selected) {
+      // unselect all rows
+      this.rows.forEach(r => r.selected = false);
+
+      // select this row
+      r.selected = true;
+
+      // hack in progress
+      this.hackzor = !this.hackzor;
+    }
+  }
+
+  onFilterChangeHandler(event, c) {
+    c.filterValue = event.target.value;
+
+    // hack in progress
+    this.hackzor = !this.hackzor;
+
+    // searching column
+    // this.columns = this.columns
+    //   .map(col => {
+    //     if (col.code === c.code) {
+    //       col.filterValue = event.target.value;
+    //     }
+
+    //     return col;
+    //   });
+  }
+
+  filterRows(_rows: any[]) {
+    const columnsWithFilter = this.columns.filter(c => {
+      if (c.filterValue) {
+        return c.filterValue.length > 0;
+      }
+      return false;
+    });
+
+    return _rows.filter(r => {
+      if (columnsWithFilter.length > 0) {
+        // there is atleast one filter
+        return (
+          columnsWithFilter.filter(c => {
+            let rowCell = r.fields[c.code].smeupObject.codice;
+            if (rowCell) {
+              return rowCell.includes(c.filterValue);
+            }
+            return false;
+          }).length == columnsWithFilter.length
+        );
+      }
+      return true;
+    });
   }
 
   render() {
+    // console.log("rendering");
+
     // header
     let thead = null;
     if (this.columns) {
       const className = this.sortable ? "sortable" : "";
 
-      thead = this.columns.map(c => (
-        <th onClick={this.onSort.bind(this, c)} class={className}>{c.code}</th>
-      ))
+      thead = this.columns.map(c => {
+        let filter = null;
+        if (this.filterable) {
+          filter = (<input type="text" value={c.filterValue ? c.filterValue : ""} onChange={(event) => this.onFilterChangeHandler(event, c)}></input>);
+        }
+
+        return (<th onClick={this.onSort.bind(this, c)} class={className}>
+          {c.code}
+          <br />
+          {filter}
+        </th>);
+      })
     }
 
     let tbody = null;
@@ -79,8 +147,10 @@ export class SmeupMatrix {
         sortedRows = this.sortRows(this.rows);
       }
 
-      tbody = sortedRows.map(r => (
-        <tr>{this.columns.map(c => (
+      const filteredRows = this.filterRows(sortedRows);
+
+      tbody = filteredRows.map(r => (
+        <tr class={r.selected ? 'selected' : ''}>{this.columns.map(c => (
           <td onClick={this.onCellClickedHandler.bind(this, c, r)}>{r.fields[c.code].smeupObject.codice}</td>
         ))}</tr>
       ))

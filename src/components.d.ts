@@ -43,11 +43,13 @@ export namespace Components {
 
   interface SmeupMat {
     'columns': any[];
+    'filterable': boolean;
     'rows': any[];
     'sortable': boolean;
   }
   interface SmeupMatAttributes extends StencilHTMLAttributes {
     'columns'?: any[];
+    'filterable'?: boolean;
     'onOnCellClicked'?: (event: CustomEvent) => void;
     'rows'?: any[];
     'sortable'?: boolean;

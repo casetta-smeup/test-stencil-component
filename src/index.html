@@ -31,6 +31,11 @@
       <label for="sort">Enable sort</label>
       <input type="checkbox" name="sort" id="sort" onchange="toggleMatSort(event)">
     </div>
+  
+    <div>
+        <label for="filter">Enable filters</label>
+        <input type="checkbox" name="filter" id="filter" onchange="toggleMatFilter(event)">
+      </div>
   </div>
 
   <smeup-mat onCellClicked="console.log('test')"></smeup-mat>
@@ -97,6 +102,10 @@
       const table = document.querySelector("smeup-mat");
       table.columns = bigColumns;
       table.rows = bigRows;
+    }
+
+    function toggleMatFilter(event) {
+      document.querySelector("smeup-mat").filterable = event.target.checked;
     }
 
     function toggleMatSort(event) {
