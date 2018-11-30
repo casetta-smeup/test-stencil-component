@@ -16,6 +16,10 @@
     .options {
       margin-bottom: 1rem;
     }
+
+    smeup-mat::shadow table {
+      margin: 30px;
+    }
   </style>
 </head>
 
@@ -38,7 +42,7 @@
       </div>
   </div>
 
-  <smeup-mat onCellClicked="console.log('test')"></smeup-mat>
+  <smeup-mat></smeup-mat>
 
   <p id="label"></p>
 
@@ -59,7 +63,6 @@
       const bigRows = new Array();
 
       const inputValue = document.querySelector("input").value;
-      console.log('input value', inputValue);
 
       for (let i = 0; i < inputValue; i++) {
         const row = {
