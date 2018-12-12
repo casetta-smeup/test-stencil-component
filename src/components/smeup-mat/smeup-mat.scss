@@ -1,31 +1,33 @@
-table {
-  width: calc(100% - 2rem);
-  border-collapse: collapse;
-
-  tr {
-    td,
-    th {
-      padding: 8px 5px;
-      border: 1px solid #ddd;
-    }
-  }
-
-  thead {
-    th {
-      &.sortable {
-        cursor: pointer;
-      }
-    }
-  }
-
-  tbody {
+smeup-mat {
+  table {
+    width: calc(100% - 2rem);
+    border-collapse: collapse;
+  
     tr {
-      &.selected {
-        background: lightcoral;
+      td,
+      th {
+        padding: 8px 5px;
+        border: 1px solid #ddd;
       }
-
-      &:hover {
-        background: #ccc;
+    }
+  
+    thead {
+      th {
+        &.sortable {
+          cursor: pointer;
+        }
+      }
+    }
+  
+    tbody {
+      tr {
+        &.selected {
+          background: lightcoral;
+        }
+  
+        &:hover {
+          background: #ccc;
+        }
       }
     }
   }
