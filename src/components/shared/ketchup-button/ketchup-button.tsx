@@ -14,7 +14,8 @@ export class KetchupButton {
 
   @Prop() label: string;
   @Prop() iconClass: string;
-  @Prop() fillspace: boolean;
+  @Prop() fillspace = false;
+  @Prop() showtext = true;
 
   @Watch('fillspace')
   onFillspaceChange(newValue: string, oldValue: string) {
@@ -31,7 +32,7 @@ export class KetchupButton {
 
   render() {
     let btnLabel = null;
-    if (this.label) {
+    if (this.showtext && this.label) {
       btnLabel = <span class="button-text">{this.label}</span>;
     }
 

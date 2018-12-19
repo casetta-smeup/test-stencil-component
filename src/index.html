@@ -59,6 +59,11 @@
       <label for="btn-fillspace">Fillspace</label>
       <input type="checkbox" name="btn-fillspace" id="btn-fillspace" onchange="toggleBtnFillspace(event)">
     </div>
+
+    <div>
+        <label for="btn-showtext">Show text</label>
+        <input type="checkbox" checked name="btn-showtext" id="btn-showtext" onchange="toggleBtnShowtext(event)">
+      </div>
   </div>
 
   <ketchup-btn></ketchup-btn>
@@ -357,6 +362,10 @@
     function toggleBtnFillspace() {
       document.querySelector('ketchup-btn').fillspace = event.target.checked;
     }
+
+function toggleBtnShowtext() {
+  document.querySelector('ketchup-btn').showtext = event.target.checked;
+}
   </script>
 </body>
 

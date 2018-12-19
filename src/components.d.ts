@@ -15,10 +15,12 @@ export namespace Components {
   interface KetchupBtn {
     'buttons': any[];
     'fillspace': false;
+    'showtext': true;
   }
   interface KetchupBtnAttributes extends StencilHTMLAttributes {
     'buttons'?: any[];
     'fillspace'?: false;
+    'showtext'?: true;
   }
 
   interface MyComponent {
@@ -54,11 +56,13 @@ export namespace Components {
     'fillspace': boolean;
     'iconClass': string;
     'label': string;
+    'showtext': boolean;
   }
   interface KetchupButtonAttributes extends StencilHTMLAttributes {
     'fillspace'?: boolean;
     'iconClass'?: string;
     'label'?: string;
+    'showtext'?: boolean;
   }
 
   interface SmeupMat {

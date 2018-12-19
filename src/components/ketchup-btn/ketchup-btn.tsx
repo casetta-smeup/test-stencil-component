@@ -9,6 +9,7 @@ export class KetchupBtn {
 
   // setup props
   @Prop() fillspace: false;
+  @Prop() showtext: true;
 
   render() {
     let buttonsJsx = null;
@@ -18,6 +19,7 @@ export class KetchupBtn {
           label={btn.value}
           iconClass={btn.iconClass}
           fillspace={this.fillspace}
+          showtext={this.showtext}
         ></ketchup-button>
       ))
     }
