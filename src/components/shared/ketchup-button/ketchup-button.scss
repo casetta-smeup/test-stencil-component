@@ -15,4 +15,12 @@ ketchup-button {
       width: 18px;
     }
   }
+
+  &.fillspace {
+    width: 100%;
+
+    > button {
+      width: 100%;
+    }
+  }
 }

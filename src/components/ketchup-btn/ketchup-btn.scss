@@ -5,5 +5,9 @@ ketchup-btn {
     > ketchup-button {
       margin-right: 3px;
     }
+
+    &.fillspace {
+      width: 100%;
+    }
   }
 }

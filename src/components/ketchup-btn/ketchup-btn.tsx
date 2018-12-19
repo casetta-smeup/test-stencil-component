@@ -7,14 +7,28 @@ import { Component, Prop } from '@stencil/core';
 export class KetchupBtn {
   @Prop() buttons: any[];
 
+  // setup props
+  @Prop() fillspace: false;
+
   render() {
     let buttonsJsx = null;
     if (this.buttons) {
-      buttonsJsx = this.buttons.map(btn => <ketchup-button label={btn.value} iconClass={btn.iconClass}></ketchup-button>)
+      buttonsJsx = this.buttons.map(btn => (
+        <ketchup-button
+          label={btn.value}
+          iconClass={btn.iconClass}
+          fillspace={this.fillspace}
+        ></ketchup-button>
+      ))
+    }
+
+    let compClass = 'btn-container';
+    if (this.fillspace) {
+      compClass += ' fillspace';
     }
 
     return (
-      <div class="btn-container">
+      <div class={compClass}>
         {buttonsJsx}
       </div>
     );

@@ -21,6 +21,10 @@
     .options {
       margin-bottom: 1rem;
     }
+
+    hr {
+      margin: 2rem 0;
+    }
   </style>
 </head>
 
@@ -47,6 +51,15 @@
   </smeup-mat>
 
   <p id="label"></p>
+
+  <hr />
+
+  <div class="options">
+    <div>
+      <label for="btn-fillspace">Fillspace</label>
+      <input type="checkbox" name="btn-fillspace" id="btn-fillspace" onchange="toggleBtnFillspace(event)">
+    </div>
+  </div>
 
   <ketchup-btn></ketchup-btn>
 
@@ -283,7 +296,9 @@
 
       p.innerHTML = `Hai cliccato sulla colonna ${cj} <br /> della riga ${rj}`;
     })
+  </script>
 
+  <script>
     // button list
     const btnlist = JSON.parse(`{
       "key": "i456",
@@ -335,10 +350,13 @@
       "dynamisms": []
     }`);
 
-    console.log(btnlist);
+    // console.log(btnlist);
 
-    const ketchupBtn = document.querySelector('ketchup-btn');
-    ketchupBtn.buttons = btnlist.data;
+    document.querySelector('ketchup-btn').buttons = btnlist.data;
+
+    function toggleBtnFillspace() {
+      document.querySelector('ketchup-btn').fillspace = event.target.checked;
+    }
   </script>
 </body>
 

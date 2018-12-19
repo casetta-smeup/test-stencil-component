@@ -14,9 +14,11 @@ export namespace Components {
 
   interface KetchupBtn {
     'buttons': any[];
+    'fillspace': false;
   }
   interface KetchupBtnAttributes extends StencilHTMLAttributes {
     'buttons'?: any[];
+    'fillspace'?: false;
   }
 
   interface MyComponent {
@@ -49,10 +51,12 @@ export namespace Components {
   }
 
   interface KetchupButton {
+    'fillspace': boolean;
     'iconClass': string;
     'label': string;
   }
   interface KetchupButtonAttributes extends StencilHTMLAttributes {
+    'fillspace'?: boolean;
     'iconClass'?: string;
     'label'?: string;
   }
