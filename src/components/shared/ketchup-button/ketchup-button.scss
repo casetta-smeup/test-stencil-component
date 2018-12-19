@@ -1,0 +1,18 @@
+ketchup-button {
+  button {
+    background: #4e908f;
+    border: none;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: none;
+    white-space: nowrap;
+    padding: 0px 8px;
+    line-height: 30px;
+    cursor: pointer;
+
+    > .button-icon {
+      display: inline-block;
+      width: 18px;
+    }
+  }
+}

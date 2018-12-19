@@ -7,6 +7,7 @@
   <title>Stencil Component Starter</title>
   <script src="/build/mycomponent.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+  <link href="https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
 
   <style>
     * {
@@ -46,6 +47,8 @@
   </smeup-mat>
 
   <p id="label"></p>
+
+  <ketchup-btn></ketchup-btn>
 
   <script>
     function loadBigData() {
@@ -266,8 +269,6 @@
       "key": "i2695"
     }`);
 
-    console.log(matrix);
-
     const mat = document.querySelector("smeup-mat");
 
     mat.columns = matrix.data.columns;
@@ -282,6 +283,62 @@
 
       p.innerHTML = `Hai cliccato sulla colonna ${cj} <br /> della riga ${rj}`;
     })
+
+    // button list
+    const btnlist = JSON.parse(`{
+      "key": "i456",
+      "options": {
+        "BTN": {
+          "": {
+            "enableSort": true
+          }
+        }
+      },
+      "data": [{
+        "value": "label bottone #1",
+        "options (sarebbe il tasto destro)": true,
+        "obj": "J1KEY",
+        "iconClass": "mdi mdi-account",
+        "children": []
+      },{
+        "value": "label bottone #2",
+        "options (sarebbe il tasto destro)": true,
+        "obj": "J1KEY",
+        "iconClass": "mdi mdi-plus",
+        "children": []
+      }],
+      "messages": [],
+      "actions": {
+        "row": [
+          {
+            "exec": "...",
+            "icon": "mdi-clock",
+            "text": "Scheda orologio"
+          }
+        ],
+        "global": [],
+        "auto (tag action attuale)": [
+          "F() / CLOSE / ETC...",
+          "F() / CLOSE / ETC...",
+          "F() / CLOSE / ETC...",
+          "F() / CLOSE / ETC..."
+        ],
+        "command": [
+          {
+            "exec": "...",
+            "icon": "mdi-play",
+            "text": "Spotify"
+          }
+        ]
+      },
+      "variables": [],
+      "dynamisms": []
+    }`);
+
+    console.log(btnlist);
+
+    const ketchupBtn = document.querySelector('ketchup-btn');
+    ketchupBtn.buttons = btnlist.data;
   </script>
 </body>
 

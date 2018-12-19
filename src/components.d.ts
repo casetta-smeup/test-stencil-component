@@ -12,6 +12,13 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface KetchupBtn {
+    'buttons': any[];
+  }
+  interface KetchupBtnAttributes extends StencilHTMLAttributes {
+    'buttons'?: any[];
+  }
+
   interface MyComponent {
     /**
     * The first name
@@ -41,6 +48,15 @@ export namespace Components {
     'middle'?: string;
   }
 
+  interface KetchupButton {
+    'iconClass': string;
+    'label': string;
+  }
+  interface KetchupButtonAttributes extends StencilHTMLAttributes {
+    'iconClass'?: string;
+    'label'?: string;
+  }
+
   interface SmeupMat {
     'columns': any[];
     'filterable': boolean;
@@ -58,20 +74,36 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'KetchupBtn': Components.KetchupBtn;
     'MyComponent': Components.MyComponent;
+    'KetchupButton': Components.KetchupButton;
     'SmeupMat': Components.SmeupMat;
   }
 
   interface StencilIntrinsicElements {
+    'ketchup-btn': Components.KetchupBtnAttributes;
     'my-component': Components.MyComponentAttributes;
+    'ketchup-button': Components.KetchupButtonAttributes;
     'smeup-mat': Components.SmeupMatAttributes;
   }
 
+
+  interface HTMLKetchupBtnElement extends Components.KetchupBtn, HTMLStencilElement {}
+  var HTMLKetchupBtnElement: {
+    prototype: HTMLKetchupBtnElement;
+    new (): HTMLKetchupBtnElement;
+  };
 
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
+  };
+
+  interface HTMLKetchupButtonElement extends Components.KetchupButton, HTMLStencilElement {}
+  var HTMLKetchupButtonElement: {
+    prototype: HTMLKetchupButtonElement;
+    new (): HTMLKetchupButtonElement;
   };
 
   interface HTMLSmeupMatElement extends Components.SmeupMat, HTMLStencilElement {}
@@ -81,12 +113,16 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'ketchup-btn': HTMLKetchupBtnElement
     'my-component': HTMLMyComponentElement
+    'ketchup-button': HTMLKetchupButtonElement
     'smeup-mat': HTMLSmeupMatElement
   }
 
   interface ElementTagNameMap {
+    'ketchup-btn': HTMLKetchupBtnElement;
     'my-component': HTMLMyComponentElement;
+    'ketchup-button': HTMLKetchupButtonElement;
     'smeup-mat': HTMLSmeupMatElement;
   }
 
