@@ -8,8 +8,14 @@ export class KetchupBtn {
   @Prop() buttons: any[];
 
   // setup props
-  @Prop() fillspace: false;
-  @Prop() showtext: true;
+  @Prop() fillspace = false;
+  @Prop() showtext = true;
+  @Prop() showicon = true;
+  @Prop() horizontal = true;
+  @Prop() rounded = false;
+  @Prop() textmode: string; // should be an enum
+  @Prop() transparent = false;
+  @Prop() borderColor: string;
 
   render() {
     let buttonsJsx = null;
@@ -20,6 +26,11 @@ export class KetchupBtn {
           iconClass={btn.iconClass}
           fillspace={this.fillspace}
           showtext={this.showtext}
+          showicon={this.showicon}
+          rounded={this.rounded}
+          textmode={this.textmode}
+          transparent={this.transparent}
+          borderColor={this.borderColor}
         ></ketchup-button>
       ))
     }
@@ -27,6 +38,10 @@ export class KetchupBtn {
     let compClass = 'btn-container';
     if (this.fillspace) {
       compClass += ' fillspace';
+    }
+
+    if (!this.horizontal) {
+      compClass += ' vertical';
     }
 
     return (

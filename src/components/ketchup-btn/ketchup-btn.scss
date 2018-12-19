@@ -3,11 +3,15 @@ ketchup-btn {
     display: flex;
 
     > ketchup-button {
-      margin-right: 3px;
+      margin: 3px;
     }
 
     &.fillspace {
       width: 100%;
+    }
+
+    &.vertical {
+      flex-direction: column;
     }
   }
 }

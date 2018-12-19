@@ -9,10 +9,22 @@ ketchup-button {
     padding: 0px 8px;
     line-height: 30px;
     cursor: pointer;
+    text-align: center;
 
     > .button-icon {
-      display: inline-block;
+      float: left;
+      display: block;
       width: 18px;
+    }
+
+    &.rounded {
+      border-radius: 15px;
+    }
+
+    &.transparent {
+      background-color: transparent;
+      border: 1px solid gray;
+      color: gray;
     }
   }
 

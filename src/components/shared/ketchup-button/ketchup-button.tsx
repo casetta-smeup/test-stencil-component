@@ -16,6 +16,11 @@ export class KetchupButton {
   @Prop() iconClass: string;
   @Prop() fillspace = false;
   @Prop() showtext = true;
+  @Prop() showicon = true;
+  @Prop() rounded = false;
+  @Prop() textmode: string;
+  @Prop() transparent = false;
+  @Prop() borderColor: string;
 
   @Watch('fillspace')
   onFillspaceChange(newValue: string, oldValue: string) {
@@ -30,14 +35,27 @@ export class KetchupButton {
     }
   }
 
+  @Watch('borderColor')
+  onBorderColorChange(newValue: string, oldValue: string) {
+    if (newValue === oldValue) {
+      return;
+    }
+
+    if (this.transparent && this.borderColor) {
+      const btnStyle = this.ketchupButtonEl.querySelector('button').style;
+      btnStyle.borderColor = this.borderColor;
+      btnStyle.color = this.borderColor;
+    }
+  }
+
   render() {
     let btnLabel = null;
-    if (this.showtext && this.label) {
+    if ('Hint' !== this.textmode && this.showtext && this.label) {
       btnLabel = <span class="button-text">{this.label}</span>;
     }
 
     let icon = null;
-    if (this.iconClass) {
+    if (this.showicon && this.iconClass) {
       icon = <span class={'button-icon ' + this.iconClass}></span>;
     }
 
@@ -46,8 +64,24 @@ export class KetchupButton {
       btnClass = 'fillspace';
     }
 
+    if (this.rounded) {
+      btnClass += " rounded";
+    }
+
+    if (this.transparent) {
+      btnClass += ' transparent';
+    }
+
+    let title = '';
+    if ('Hint' === this.textmode) {
+      title = this.label;
+    }
+
     return (
-      <button class={btnClass}>
+      <button
+        class={btnClass}
+        title={title}
+      >
         {icon}
         {btnLabel}
       </button>

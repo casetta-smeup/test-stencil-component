@@ -13,14 +13,26 @@ import '@stencil/core';
 export namespace Components {
 
   interface KetchupBtn {
+    'borderColor': string;
     'buttons': any[];
-    'fillspace': false;
-    'showtext': true;
+    'fillspace': boolean;
+    'horizontal': boolean;
+    'rounded': boolean;
+    'showicon': boolean;
+    'showtext': boolean;
+    'textmode': string;
+    'transparent': boolean;
   }
   interface KetchupBtnAttributes extends StencilHTMLAttributes {
+    'borderColor'?: string;
     'buttons'?: any[];
-    'fillspace'?: false;
-    'showtext'?: true;
+    'fillspace'?: boolean;
+    'horizontal'?: boolean;
+    'rounded'?: boolean;
+    'showicon'?: boolean;
+    'showtext'?: boolean;
+    'textmode'?: string;
+    'transparent'?: boolean;
   }
 
   interface MyComponent {
@@ -53,16 +65,26 @@ export namespace Components {
   }
 
   interface KetchupButton {
+    'borderColor': string;
     'fillspace': boolean;
     'iconClass': string;
     'label': string;
+    'rounded': boolean;
+    'showicon': boolean;
     'showtext': boolean;
+    'textmode': string;
+    'transparent': boolean;
   }
   interface KetchupButtonAttributes extends StencilHTMLAttributes {
+    'borderColor'?: string;
     'fillspace'?: boolean;
     'iconClass'?: string;
     'label'?: string;
+    'rounded'?: boolean;
+    'showicon'?: boolean;
     'showtext'?: boolean;
+    'textmode'?: string;
+    'transparent'?: boolean;
   }
 
   interface SmeupMat {
