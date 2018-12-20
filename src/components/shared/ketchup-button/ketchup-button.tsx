@@ -1,6 +1,8 @@
 import {
   Component,
   Element,
+  Event,
+  EventEmitter,
   Prop,
   Watch
 } from '@stencil/core';
@@ -21,6 +23,13 @@ export class KetchupButton {
   @Prop() textmode: string;
   @Prop() transparent = false;
   @Prop() borderColor: string;
+
+  @Event({
+    eventName: 'btnClicked',
+    composed: true,
+    cancelable: true,
+    bubbles: true
+  }) btnClicked: EventEmitter;
 
   @Watch('fillspace')
   onFillspaceChange(newValue: string, oldValue: string) {
@@ -46,6 +55,10 @@ export class KetchupButton {
       btnStyle.borderColor = this.borderColor;
       btnStyle.color = this.borderColor;
     }
+  }
+
+  onBtnClickedHandler() {
+    this.btnClicked.emit();
   }
 
   render() {
@@ -81,6 +94,7 @@ export class KetchupButton {
       <button
         class={btnClass}
         title={title}
+        onClick={this.onBtnClickedHandler.bind(this)}
       >
         {icon}
         {btnLabel}

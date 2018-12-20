@@ -1,4 +1,7 @@
-import { Component, Prop } from '@stencil/core';
+import {
+  Component,
+  Prop
+} from '@stencil/core';
 
 @Component({
   tag: 'ketchup-btn',
@@ -20,7 +23,7 @@ export class KetchupBtn {
   render() {
     let buttonsJsx = null;
     if (this.buttons) {
-      buttonsJsx = this.buttons.map(btn => (
+      buttonsJsx = this.buttons.map((btn, i) => (
         <ketchup-button
           label={btn.value}
           iconClass={btn.iconClass}
@@ -31,6 +34,7 @@ export class KetchupBtn {
           textmode={this.textmode}
           transparent={this.transparent}
           borderColor={this.borderColor}
+          data-id={i}
         ></ketchup-button>
       ))
     }

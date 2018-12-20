@@ -80,6 +80,7 @@ export namespace Components {
     'fillspace'?: boolean;
     'iconClass'?: string;
     'label'?: string;
+    'onBtnClicked'?: (event: CustomEvent) => void;
     'rounded'?: boolean;
     'showicon'?: boolean;
     'showtext'?: boolean;
