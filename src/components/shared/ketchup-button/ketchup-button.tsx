@@ -5,89 +5,90 @@ import {
   EventEmitter,
   Prop,
   Watch
-} from '@stencil/core';
+} from '@stencil/core'
 
 @Component({
   tag: 'ketchup-button',
   styleUrl: 'ketchup-button.scss'
 })
 export class KetchupButton {
-  @Element() ketchupButtonEl: HTMLElement;
+  @Element() ketchupButtonEl: HTMLElement
 
-  @Prop() label: string;
-  @Prop() iconClass: string;
-  @Prop() fillspace = false;
-  @Prop() showtext = true;
-  @Prop() showicon = true;
-  @Prop() rounded = false;
-  @Prop() textmode: string;
-  @Prop() transparent = false;
-  @Prop() borderColor: string;
+  @Prop() label: string
+  @Prop() iconClass: string
+  @Prop() fillspace = false
+  @Prop() showtext = true
+  @Prop() showicon = true
+  @Prop() rounded = false
+  @Prop() textmode: string
+  @Prop() transparent = false
+  @Prop() borderColor: string
 
   @Event({
     eventName: 'btnClicked',
     composed: true,
     cancelable: true,
     bubbles: true
-  }) btnClicked: EventEmitter;
+  })
+  btnClicked: EventEmitter
 
   @Watch('fillspace')
   onFillspaceChange(newValue: string, oldValue: string) {
     if (newValue === oldValue) {
-      return;
+      return
     }
 
     if (this.fillspace) {
-      this.ketchupButtonEl.classList.add('fillspace');
+      this.ketchupButtonEl.classList.add('fillspace')
     } else {
-      this.ketchupButtonEl.classList.remove('fillspace'); 
+      this.ketchupButtonEl.classList.remove('fillspace')
     }
   }
 
   @Watch('borderColor')
   onBorderColorChange(newValue: string, oldValue: string) {
     if (newValue === oldValue) {
-      return;
+      return
     }
 
     if (this.transparent && this.borderColor) {
-      const btnStyle = this.ketchupButtonEl.querySelector('button').style;
-      btnStyle.borderColor = this.borderColor;
-      btnStyle.color = this.borderColor;
+      const btnStyle = this.ketchupButtonEl.querySelector('button').style
+      btnStyle.borderColor = this.borderColor
+      btnStyle.color = this.borderColor
     }
   }
 
   onBtnClickedHandler() {
-    this.btnClicked.emit();
+    this.btnClicked.emit()
   }
 
   render() {
-    let btnLabel = null;
+    let btnLabel = null
     if ('Hint' !== this.textmode && this.showtext && this.label) {
-      btnLabel = <span class="button-text">{this.label}</span>;
+      btnLabel = <span class="button-text">{this.label}</span>
     }
 
-    let icon = null;
+    let icon = null
     if (this.showicon && this.iconClass) {
-      icon = <span class={'button-icon ' + this.iconClass}></span>;
+      icon = <span class={'button-icon ' + this.iconClass} />
     }
 
-    let btnClass = '';
+    let btnClass = ''
     if (this.fillspace) {
-      btnClass = 'fillspace';
+      btnClass = 'fillspace'
     }
 
     if (this.rounded) {
-      btnClass += " rounded";
+      btnClass += ' rounded'
     }
 
     if (this.transparent) {
-      btnClass += ' transparent';
+      btnClass += ' transparent'
     }
 
-    let title = '';
+    let title = ''
     if ('Hint' === this.textmode) {
-      title = this.label;
+      title = this.label
     }
 
     return (
@@ -99,6 +100,6 @@ export class KetchupButton {
         {icon}
         {btnLabel}
       </button>
-    );
+    )
   }
 }
