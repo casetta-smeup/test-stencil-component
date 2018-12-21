@@ -14,6 +14,7 @@ import {
 export class KetchupButton {
   @Element() ketchupButtonEl: HTMLElement
 
+  @Prop() flat = false
   @Prop() label: string
   @Prop() buttonClass: string
   @Prop() iconClass: string
@@ -74,19 +75,28 @@ export class KetchupButton {
       icon = <span class={'button-icon ' + this.iconClass} />
     }
 
-    let btnClass = this.buttonClass ? this.buttonClass : ''
+    let btnClass = ''
+    if (this.flat) {
+      btnClass = 'flat-btn'
+    } else {
+      if (this.buttonClass) {
+        btnClass += this.buttonClass
+      }
+
+      if (this.rounded) {
+        btnClass += ' rounded'
+      }
+
+      if (this.transparent) {
+        btnClass += ' transparent'
+      }
+    }
 
     if (this.fillspace) {
-      btnClass = 'fillspace'
+      btnClass += ' fillspace'
     }
 
-    if (this.rounded) {
-      btnClass += ' rounded'
-    }
-
-    if (this.transparent) {
-      btnClass += ' transparent'
-    }
+    btnClass = btnClass.trim()
 
     let title = ''
     if ('Hint' === this.textmode) {

@@ -17,6 +17,7 @@ export namespace Components {
     'buttonClass': string;
     'buttons': any[];
     'fillspace': boolean;
+    'flat': boolean;
     'horizontal': boolean;
     'rounded': boolean;
     'showicon': boolean;
@@ -29,6 +30,7 @@ export namespace Components {
     'buttonClass'?: string;
     'buttons'?: any[];
     'fillspace'?: boolean;
+    'flat'?: boolean;
     'horizontal'?: boolean;
     'rounded'?: boolean;
     'showicon'?: boolean;
@@ -70,6 +72,7 @@ export namespace Components {
     'borderColor': string;
     'buttonClass': string;
     'fillspace': boolean;
+    'flat': boolean;
     'iconClass': string;
     'label': string;
     'rounded': boolean;
@@ -82,6 +85,7 @@ export namespace Components {
     'borderColor'?: string;
     'buttonClass'?: string;
     'fillspace'?: boolean;
+    'flat'?: boolean;
     'iconClass'?: string;
     'label'?: string;
     'onBtnClicked'?: (event: CustomEvent) => void;

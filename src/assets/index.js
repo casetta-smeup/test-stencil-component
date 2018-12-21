@@ -332,3 +332,7 @@ function onBorderColorChange(event) {
 function onBorderButtonClassChange(event) {
   document.querySelector('ketchup-btn').buttonClass = event.target.value
 }
+
+function toggleBtnFlat(event) {
+  document.querySelector('ketchup-btn').flat = event.target.checked
+}

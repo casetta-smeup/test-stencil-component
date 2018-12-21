@@ -14,6 +14,7 @@ export class KetchupBtn {
   @Prop() showicon = true
   @Prop() horizontal = true
   @Prop() rounded = false
+  @Prop() flat = false
   @Prop() textmode: string // should be an enum
   @Prop() transparent = false
   @Prop() borderColor: string
@@ -33,6 +34,7 @@ export class KetchupBtn {
           transparent={this.transparent}
           borderColor={this.borderColor}
           buttonClass={this.buttonClass}
+          flat={this.flat}
           data-id={i}
         />
       ))
