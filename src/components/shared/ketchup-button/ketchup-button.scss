@@ -11,6 +11,10 @@ ketchup-button {
     cursor: pointer;
     text-align: center;
 
+    &:hover {
+      box-shadow: 2px 2px 5px 1px rgba(100, 100, 100, 0.7);
+    }
+
     > .button-icon {
       float: left;
       display: block;
@@ -25,6 +29,23 @@ ketchup-button {
       background-color: transparent;
       border: 1px solid gray;
       color: gray;
+    }
+
+    /* standard classes */
+    &.btn-info {
+      background: #6a8fd1;
+    }
+
+    &.btn-danger {
+      background: #f0423c;
+
+      &:hover {
+        background: #d91e18;
+      }
+    }
+
+    &.btn-warning {
+      background: #ffd454;
     }
   }
 

@@ -1,49 +1,49 @@
 function loadBigData() {
-  const bigColumns = new Array();
+  const bigColumns = new Array()
 
   for (let i = 0; i < 20; i++) {
     const column = {
-      sortMode: "D"
-    };
-    column.name = "COL_" + i;
-    column.title = "COL_" + i;
-    column.size = 0;
+      sortMode: 'D'
+    }
+    column.name = 'COL_' + i
+    column.title = 'COL_' + i
+    column.size = 0
 
-    bigColumns.push(column);
+    bigColumns.push(column)
   }
 
-  const bigRows = new Array();
+  const bigRows = new Array()
 
-  const inputValue = document.querySelector("input").value;
+  const inputValue = document.querySelector('input').value
 
   for (let i = 0; i < inputValue; i++) {
     const row = {
       selected: false,
       values: {}
-    };
+    }
 
     // init fields
     bigColumns.forEach(c => {
-      row.values[c.name] = faker.name.findName();
+      row.values[c.name] = faker.name.findName()
 
-      row.values["ID"] = "" + i;
-      row.values["RowID"] = "" + i;
-    });
+      row.values['ID'] = '' + i
+      row.values['RowID'] = '' + i
+    })
 
-    bigRows.push(row);
+    bigRows.push(row)
   }
 
-  const table = document.querySelector("smeup-mat");
-  table.columns = bigColumns;
-  table.rows = bigRows;
+  const table = document.querySelector('smeup-mat')
+  table.columns = bigColumns
+  table.rows = bigRows
 }
 
 function toggleMatFilter(event) {
-  document.querySelector("smeup-mat").filterable = event.target.checked;
+  document.querySelector('smeup-mat').filterable = event.target.checked
 }
 
 function toggleMatSort(event) {
-  document.querySelector("smeup-mat").sortable = event.target.checked;
+  document.querySelector('smeup-mat').sortable = event.target.checked
 }
 
 const matrix = JSON.parse(`{
@@ -214,22 +214,22 @@ const matrix = JSON.parse(`{
     }]
   },
   "key": "i2695"
-}`);
+}`)
 
-const mat = document.querySelector("smeup-mat");
+const mat = document.querySelector('smeup-mat')
 
-mat.columns = matrix.data.columns;
-mat.rows = matrix.data.rows;
+mat.columns = matrix.data.columns
+mat.rows = matrix.data.rows
 
 // add event listener for click events
-mat.addEventListener("onCellClicked", event => {
-  const p = document.querySelector("#label");
+mat.addEventListener('onCellClicked', event => {
+  const p = document.querySelector('#label')
 
-  const cj = JSON.stringify(event.detail.c);
-  const rj = JSON.stringify(event.detail.r);
+  const cj = JSON.stringify(event.detail.c)
+  const rj = JSON.stringify(event.detail.r)
 
-  p.innerHTML = `Hai cliccato sulla colonna ${cj} <br /> della riga ${rj}`;
-});
+  p.innerHTML = `Hai cliccato sulla colonna ${cj} <br /> della riga ${rj}`
+})
 
 // BTN
 // button list
@@ -281,50 +281,54 @@ const btnlist = JSON.parse(`{
       },
       "variables": [],
       "dynamisms": []
-    }`);
+    }`)
 
-document.querySelector("ketchup-btn").buttons = btnlist.data;
+document.querySelector('ketchup-btn').buttons = btnlist.data
 
-document.querySelector("ketchup-btn").addEventListener("btnClicked", ev => {
-  const btnIndex = event.target.dataset.id;
+document.querySelector('ketchup-btn').addEventListener('btnClicked', ev => {
+  const btnIndex = event.target.dataset.id
 
-  const jsonBtn = JSON.stringify(btnlist.data[btnIndex]);
+  const jsonBtn = JSON.stringify(btnlist.data[btnIndex])
 
   document.getElementById(
-    "btn-label"
-  ).innerHTML = `Hai premuto sul pulsante: ${jsonBtn} ed il suo indice e' ${btnIndex}`;
-});
+    'btn-label'
+  ).innerHTML = `Hai premuto sul pulsante: ${jsonBtn} ed il suo indice e' ${btnIndex}`
+})
 
 function toggleBtnFillspace(event) {
-  document.querySelector("ketchup-btn").fillspace = event.target.checked;
+  document.querySelector('ketchup-btn').fillspace = event.target.checked
 }
 
 function toggleBtnShowtext(event) {
-  document.querySelector("ketchup-btn").showtext = event.target.checked;
+  document.querySelector('ketchup-btn').showtext = event.target.checked
 }
 
 function toggleBtnHorizontal(event) {
-  document.querySelector("ketchup-btn").horizontal = event.target.checked;
+  document.querySelector('ketchup-btn').horizontal = event.target.checked
 }
 
 function toggleBtnShowicon(event) {
-  document.querySelector("ketchup-btn").showicon = event.target.checked;
+  document.querySelector('ketchup-btn').showicon = event.target.checked
 }
 
 function toggleBtnRounded(event) {
-  document.querySelector("ketchup-btn").rounded = event.target.checked;
+  document.querySelector('ketchup-btn').rounded = event.target.checked
 }
 
 function toggleBtnTextModeHint(event) {
-  document.querySelector("ketchup-btn").textmode = event.target.checked
-    ? "Hint"
-    : "";
+  document.querySelector('ketchup-btn').textmode = event.target.checked
+    ? 'Hint'
+    : ''
 }
 
 function toggleBtnTransparent(event) {
-  document.querySelector("ketchup-btn").transparent = event.target.checked;
+  document.querySelector('ketchup-btn').transparent = event.target.checked
 }
 
 function onBorderColorChange(event) {
-  document.querySelector("ketchup-btn").borderColor = event.target.value;
+  document.querySelector('ketchup-btn').borderColor = event.target.value
+}
+
+function onBorderButtonClassChange(event) {
+  document.querySelector('ketchup-btn').buttonClass = event.target.value
 }

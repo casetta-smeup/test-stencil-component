@@ -15,6 +15,7 @@ export class KetchupButton {
   @Element() ketchupButtonEl: HTMLElement
 
   @Prop() label: string
+  @Prop() buttonClass: string
   @Prop() iconClass: string
   @Prop() fillspace = false
   @Prop() showtext = true
@@ -73,7 +74,8 @@ export class KetchupButton {
       icon = <span class={'button-icon ' + this.iconClass} />
     }
 
-    let btnClass = ''
+    let btnClass = this.buttonClass ? this.buttonClass : ''
+
     if (this.fillspace) {
       btnClass = 'fillspace'
     }

@@ -1,112 +1,186 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+    <script src="/build/mycomponent.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+    <link
+      href="https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
-  <script src="/build/mycomponent.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
-  <link href="https://cdn.materialdesignicons.com/3.2.89/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+      body {
+        padding: 1rem;
+      }
 
-    body {
-      padding: 1rem;
-    }
+      .options {
+        margin-bottom: 1rem;
+      }
 
-    .options {
-      margin-bottom: 1rem;
-    }
+      hr {
+        margin: 2rem 0;
+      }
 
-    hr {
-      margin: 2rem 0;
-    }
+      .btn-options {
+        margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 0.5rem;
+      }
+    </style>
+  </head>
 
-    .btn-options {
-      margin-bottom: 1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  </style>
-</head>
+  <body>
+    <div style="display:none;">
+      <div class="options">
+        <div>
+          <label for="rowsize">Number of rows</label>
+          <input id="rowsize" type="number" value="1000" />
+          <button onclick="loadBigData()">Load big data</button>
+        </div>
 
-<body>
-  <div class="options">
-    <div>
-      <label for="rowsize">Number of rows</label>
-      <input id="rowsize" type="number" value="1000">
-      <button onclick="loadBigData()">Load big data</button>
+        <div>
+          <label for="sort">Enable sort</label>
+          <input
+            type="checkbox"
+            name="sort"
+            id="sort"
+            onchange="toggleMatSort(event)"
+          />
+        </div>
+
+        <div>
+          <label for="filter">Enable filters</label>
+          <input
+            type="checkbox"
+            name="filter"
+            id="filter"
+            onchange="toggleMatFilter(event)"
+          />
+        </div>
+      </div>
+
+      <smeup-mat> </smeup-mat>
+
+      <p id="label"></p>
+
+      <hr />
     </div>
 
-    <div>
-      <label for="sort">Enable sort</label>
-      <input type="checkbox" name="sort" id="sort" onchange="toggleMatSort(event)">
+    <div class="btn-options">
+      <div>
+        <label for="btn-showtext">Show text</label>
+        <input
+          type="checkbox"
+          checked
+          name="btn-showtext"
+          id="btn-showtext"
+          onchange="toggleBtnShowtext(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-fillspace">Fillspace</label>
+        <input
+          type="checkbox"
+          name="btn-fillspace"
+          id="btn-fillspace"
+          onchange="toggleBtnFillspace(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-horizontal">Horizontal</label>
+        <input
+          type="checkbox"
+          checked
+          name="btn-horizontal"
+          id="btn-horizontal"
+          onchange="toggleBtnHorizontal(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-showicon">Show icon</label>
+        <input
+          type="checkbox"
+          checked
+          name="btn-showicon"
+          id="btn-showicon"
+          onchange="toggleBtnShowicon(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-rounded">Rounded</label>
+        <input
+          type="checkbox"
+          name="btn-rounded"
+          id="btn-rounded"
+          onchange="toggleBtnRounded(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-hinttextmode">TextMode='Hint'</label>
+        <input
+          type="checkbox"
+          name="btn-hinttextmode"
+          id="btn-hinttextmode"
+          onchange="toggleBtnTextModeHint(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-transparent">Transparent</label>
+        <input
+          type="checkbox"
+          name="btn-transparent"
+          id="btn-transparent"
+          onchange="toggleBtnTransparent(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-bordercolor">Border color</label>
+        <input
+          type="color"
+          name="btn-bordercolor"
+          id="btn-bordercolor"
+          onchange="onBorderColorChange(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-buttonclass">Button class</label>
+        <select
+          name="btn-buttonclass"
+          id="btn-buttonclass"
+          onchange="onBorderButtonClassChange(event)"
+        >
+          <option value=""></option>
+          <option value="btn-info">btn-info</option>
+          <option value="btn-danger">btn-danger</option>
+          <option value="btn-warning">btn-warning</option>
+        </select>
+      </div>
     </div>
-  
-    <div>
-      <label for="filter">Enable filters</label>
-      <input type="checkbox" name="filter" id="filter" onchange="toggleMatFilter(event)">
-    </div>
-  </div>
 
-  <smeup-mat>
-  </smeup-mat>
+    <ketchup-btn></ketchup-btn>
 
-  <p id="label"></p>
+    <p id="btn-label"></p>
 
-  <hr />
-
-  <div class="btn-options">
-    <div>
-      <label for="btn-showtext">Show text</label>
-      <input type="checkbox" checked name="btn-showtext" id="btn-showtext" onchange="toggleBtnShowtext(event)">
-    </div>
-
-    <div>
-      <label for="btn-fillspace">Fillspace</label>
-      <input type="checkbox" name="btn-fillspace" id="btn-fillspace" onchange="toggleBtnFillspace(event)">
-    </div>
-
-    <div>
-      <label for="btn-horizontal">Horizontal</label>
-      <input type="checkbox" checked name="btn-horizontal" id="btn-horizontal" onchange="toggleBtnHorizontal(event)">
-    </div>
-
-    <div>
-      <label for="btn-showicon">Show icon</label>
-      <input type="checkbox" checked name="btn-showicon" id="btn-showicon" onchange="toggleBtnShowicon(event)">
-    </div>
-
-    <div>
-      <label for="btn-rounded">Rounded</label>
-      <input type="checkbox" name="btn-rounded" id="btn-rounded" onchange="toggleBtnRounded(event)">
-    </div>
-
-    <div>
-      <label for="btn-hinttextmode">TextMode='Hint'</label>
-      <input type="checkbox" name="btn-hinttextmode" id="btn-hinttextmode" onchange="toggleBtnTextModeHint(event)">
-    </div>
-
-    <div>
-      <label for="btn-transparent">Transparent</label>
-      <input type="checkbox" name="btn-transparent" id="btn-transparent" onchange="toggleBtnTransparent(event)">
-    </div>
-  
-    <div>
-      <label for="btn-bordercolor">Border color</label>
-      <input type="color" name="btn-bordercolor" id="btn-bordercolor" onchange="onBorderColorChange(event)">
-    </div>
-  </div>
-
-  <ketchup-btn></ketchup-btn>
-
-  <p id="btn-label"></p>
-
-  <script src="/assets/index.js"></script>
-</body>
-
+    <script src="/assets/index.js"></script>
+  </body>
 </html>
