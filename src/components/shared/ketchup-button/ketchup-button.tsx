@@ -64,9 +64,17 @@ export class KetchupButton {
     this.btnClicked.emit()
   }
 
+  _isHint() {
+    return 'Hint' === this.textmode
+  }
+
   render() {
     let btnLabel = null
-    if ('Hint' !== this.textmode && this.showtext && this.label) {
+    if (
+      (!this._isHint() || (this._isHint() && this.flat)) &&
+      this.showtext &&
+      this.label
+    ) {
       btnLabel = <span class="button-text">{this.label}</span>
     }
 

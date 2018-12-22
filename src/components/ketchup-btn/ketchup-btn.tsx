@@ -18,6 +18,11 @@ export class KetchupBtn {
   @Prop() textmode: string // should be an enum
   @Prop() transparent = false
   @Prop() borderColor: string
+  @Prop() showSelection = false
+
+  onBtnClicked(event: CustomEvent) {
+    console.log('event', event)
+  }
 
   render() {
     let buttonsJsx = null
@@ -36,6 +41,7 @@ export class KetchupBtn {
           buttonClass={this.buttonClass}
           flat={this.flat}
           data-id={i}
+          onBtnClicked={ev => this.onBtnClicked(ev)}
         />
       ))
     }

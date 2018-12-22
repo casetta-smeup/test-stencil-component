@@ -48,6 +48,10 @@ ketchup-button {
       background: #ffd454;
     }
 
+    &.btn-selected {
+      background: #ffc107;
+    }
+
     /* flat button */
     &.flat-btn {
       background: none;
