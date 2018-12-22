@@ -20,6 +20,7 @@ export namespace Components {
     'flat': boolean;
     'horizontal': boolean;
     'rounded': boolean;
+    'showSelection': boolean;
     'showicon': boolean;
     'showtext': boolean;
     'textmode': string;
@@ -33,40 +34,15 @@ export namespace Components {
     'flat'?: boolean;
     'horizontal'?: boolean;
     'rounded'?: boolean;
+    'showSelection'?: boolean;
     'showicon'?: boolean;
     'showtext'?: boolean;
     'textmode'?: string;
     'transparent'?: boolean;
   }
 
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface KetchupCnd {}
+  interface KetchupCndAttributes extends StencilHTMLAttributes {}
 
   interface KetchupButton {
     'borderColor': string;
@@ -114,14 +90,14 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'KetchupBtn': Components.KetchupBtn;
-    'MyComponent': Components.MyComponent;
+    'KetchupCnd': Components.KetchupCnd;
     'KetchupButton': Components.KetchupButton;
     'SmeupMat': Components.SmeupMat;
   }
 
   interface StencilIntrinsicElements {
     'ketchup-btn': Components.KetchupBtnAttributes;
-    'my-component': Components.MyComponentAttributes;
+    'ketchup-cnd': Components.KetchupCndAttributes;
     'ketchup-button': Components.KetchupButtonAttributes;
     'smeup-mat': Components.SmeupMatAttributes;
   }
@@ -133,10 +109,10 @@ declare global {
     new (): HTMLKetchupBtnElement;
   };
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLKetchupCndElement extends Components.KetchupCnd, HTMLStencilElement {}
+  var HTMLKetchupCndElement: {
+    prototype: HTMLKetchupCndElement;
+    new (): HTMLKetchupCndElement;
   };
 
   interface HTMLKetchupButtonElement extends Components.KetchupButton, HTMLStencilElement {}
@@ -153,14 +129,14 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'ketchup-btn': HTMLKetchupBtnElement
-    'my-component': HTMLMyComponentElement
+    'ketchup-cnd': HTMLKetchupCndElement
     'ketchup-button': HTMLKetchupButtonElement
     'smeup-mat': HTMLSmeupMatElement
   }
 
   interface ElementTagNameMap {
     'ketchup-btn': HTMLKetchupBtnElement;
-    'my-component': HTMLMyComponentElement;
+    'ketchup-cnd': HTMLKetchupCndElement;
     'ketchup-button': HTMLKetchupButtonElement;
     'smeup-mat': HTMLSmeupMatElement;
   }
