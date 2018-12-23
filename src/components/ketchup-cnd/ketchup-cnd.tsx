@@ -28,6 +28,9 @@ export class KetchupCnd {
 
     this.ctx.clearRect(0, 0, 100, 100)
 
+    // add text
+    this.drawText()
+
     // draw circles
     this.drawBackgroundCircle()
     this.drawForegroundCircle()
@@ -55,6 +58,23 @@ export class KetchupCnd {
       console.log('stopping animate')
       cancelAnimationFrame(this.requestAnimationFrame)
     }
+  }
+
+  drawText() {
+    this.ctx.font = '30px serif'
+    this.ctx.textAlign = 'center'
+    this.ctx.textBaseline = 'middle'
+    this.ctx.fillStyle = '#369491'
+
+    const max = 5000
+
+    const now = new Date().getTime()
+
+    const difference = now - this.start
+
+    const remainder = Math.floor((max - difference) / 1000) + 1
+
+    this.ctx.fillText('' + remainder, 50, 50)
   }
 
   getEndAngle() {
