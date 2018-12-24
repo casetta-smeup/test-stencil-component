@@ -366,3 +366,7 @@ function onBorderButtonClassChange(event) {
 function toggleBtnFlat(event) {
   document.querySelector('ketchup-btn').flat = event.target.checked
 }
+
+function toggleBtnShowSelection(event) {
+  document.querySelector('ketchup-btn').showSelection = event.target.checked
+}

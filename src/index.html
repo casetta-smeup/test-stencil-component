@@ -20,6 +20,10 @@
         box-sizing: border-box;
       }
 
+      :focus {
+        outline: none;
+      }
+
       body {
         padding: 1rem;
       }
@@ -184,6 +188,16 @@
           name="btn-flat"
           id="btn-flat"
           onchange="toggleBtnFlat(event)"
+        />
+      </div>
+
+      <div>
+        <label for="btn-showselection">Show Selection</label>
+        <input
+          type="checkbox"
+          name="btn-showselection"
+          id="btn-showselection"
+          onchange="toggleBtnShowSelection(event)"
         />
       </div>
     </div>

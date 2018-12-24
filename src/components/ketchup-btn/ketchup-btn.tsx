@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core'
+import { Component, Prop, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'ketchup-btn',
@@ -20,30 +20,49 @@ export class KetchupBtn {
   @Prop() borderColor: string
   @Prop() showSelection = false
 
+  @State() selectedBtnIndex: number
+
+  @Watch('showSelection')
+  onShowSelectionChanged(newValue: boolean) {
+    if (!newValue && this.buttons) {
+      // unselecting all buttons
+      this.selectedBtnIndex = -1
+    }
+  }
+
   onBtnClicked(event: CustomEvent) {
-    console.log('event', event)
+    if (this.showSelection) {
+      this.selectedBtnIndex = parseInt((event.target as HTMLElement).dataset.id)
+    }
   }
 
   render() {
     let buttonsJsx = null
     if (this.buttons) {
-      buttonsJsx = this.buttons.map((btn, i) => (
-        <ketchup-button
-          label={btn.value}
-          iconClass={btn.iconClass}
-          fillspace={this.fillspace}
-          showtext={this.showtext}
-          showicon={this.showicon}
-          rounded={this.rounded}
-          textmode={this.textmode}
-          transparent={this.transparent}
-          borderColor={this.borderColor}
-          buttonClass={this.buttonClass}
-          flat={this.flat}
-          data-id={i}
-          onBtnClicked={ev => this.onBtnClicked(ev)}
-        />
-      ))
+      buttonsJsx = this.buttons.map((btn, i) => {
+        let btnClass = this.buttonClass || ''
+        if (i === this.selectedBtnIndex) {
+          btnClass += ' btn-selected'
+        }
+
+        return (
+          <ketchup-button
+            label={btn.value}
+            iconClass={btn.iconClass}
+            fillspace={this.fillspace}
+            showtext={this.showtext}
+            showicon={this.showicon}
+            rounded={this.rounded}
+            textmode={this.textmode}
+            transparent={this.transparent}
+            borderColor={this.borderColor}
+            buttonClass={btnClass}
+            flat={this.flat}
+            data-id={i}
+            onBtnClicked={ev => this.onBtnClicked(ev)}
+          />
+        )
+      })
     }
 
     let compClass = 'btn-container'
