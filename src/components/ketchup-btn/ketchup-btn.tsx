@@ -21,6 +21,7 @@ export class KetchupBtn {
   @Prop() textmode: string
   @Prop() align: string
   @Prop() columns: number
+  @Prop() btnStyle: any = {}
 
   @State() selectedBtnIndex: number
 
@@ -91,6 +92,7 @@ export class KetchupBtn {
                 onBtnClicked={ev => this.onBtnClicked(ev)}
                 align={this.align}
                 class={this.fillspace ? 'fillspace' : ''}
+                btnStyle={this.btnStyle}
               />
             </td>
           )

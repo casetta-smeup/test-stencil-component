@@ -26,6 +26,7 @@ export class KetchupButton {
   @Prop() transparent = false
   @Prop() borderColor: string
   @Prop() align: string
+  @Prop() btnStyle: any = {}
 
   @Event({
     eventName: 'btnClicked',
@@ -45,6 +46,30 @@ export class KetchupButton {
       const btnStyle = this.ketchupButtonEl.querySelector('button').style
       btnStyle.borderColor = this.borderColor
       btnStyle.color = this.borderColor
+    }
+  }
+
+  @Watch('btnStyle')
+  onStyleChanged(newValue, oldValue) {
+    if (newValue === oldValue) {
+      return
+    }
+
+    const btnStyle = this.ketchupButtonEl.querySelector('button').style
+    if (newValue.fontName) {
+      btnStyle.fontFamily = newValue.fontName
+    } else {
+      btnStyle.fontFamily = 'inherit'
+    }
+
+    if (newValue.fontColor) {
+      btnStyle.color = newValue.fontColor
+    }
+
+    if (newValue.bold) {
+      btnStyle.fontWeight = 'bold'
+    } else {
+      btnStyle.fontWeight = 'inherit'
     }
   }
 

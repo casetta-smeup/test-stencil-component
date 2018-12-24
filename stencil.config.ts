@@ -1,9 +1,9 @@
-import { Config } from '@stencil/core';
-import { sass } from '@stencil/sass';
+import { Config } from '@stencil/core'
+import { sass } from '@stencil/sass'
 
 export const config: Config = {
   namespace: 'ketchup',
-  outputTargets:[
+  outputTargets: [
     { type: 'dist' },
     { type: 'docs' },
     {
@@ -11,7 +11,5 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     }
   ],
-  plugins: [
-    sass()
-  ]
-};
+  plugins: [sass()]
+}

@@ -230,19 +230,49 @@
             onchange="toggleBtnColumns(event)"
           />
         </div>
-      </div>
 
-      <div>
-        <label for="btn-align">Align</label>
-        <select
-          name="btn-align"
-          id="btn-align"
-          onchange="onBtnAlignChange(event)"
-        >
-          <option value=""></option>
-          <option value="left">left</option>
-          <option value="right">right</option>
-        </select>
+        <div>
+          <label for="btn-align">Align</label>
+          <select
+            name="btn-align"
+            id="btn-align"
+            onchange="onBtnAlignChange(event)"
+          >
+            <option value=""></option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="btn-fontbold">Bold font</label>
+          <input
+            type="checkbox"
+            name="btn-fontbold"
+            id="btn-fontbold"
+            onchange="toggleBtnStyle()"
+          />
+        </div>
+
+        <div>
+          <label for="btn-fontcolor">Font color</label>
+          <input
+            type="color"
+            value="#FFFFFF"
+            name="btn-fontcolor"
+            id="btn-fontcolor"
+            onchange="toggleBtnStyle()"
+          />
+        </div>
+
+        <div>
+          <label for="btn-font">Font</label>
+          <select name="btn-font" id="btn-font" onchange="toggleBtnStyle()">
+            <option value=""></option>
+            <option value="Verdana">Verdana</option>
+            <option value="Courier">Courier</option>
+          </select>
+        </div>
       </div>
 
       <ketchup-btn></ketchup-btn>
