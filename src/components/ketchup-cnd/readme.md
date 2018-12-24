@@ -12,6 +12,13 @@
 | `value`  | `value`   |             | `number` |
 
 
+## Events
+
+| Event            | Detail | Description |
+| ---------------- | ------ | ----------- |
+| `countdownEnded` |        |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

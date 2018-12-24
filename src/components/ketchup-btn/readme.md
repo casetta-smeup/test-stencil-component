@@ -12,6 +12,7 @@
 | `borderColor`   | `border-color`   |             | `string`  |
 | `buttonClass`   | `button-class`   |             | `string`  |
 | `buttons`       | --               |             | `any[]`   |
+| `columns`       | `columns`        |             | `number`  |
 | `fillspace`     | `fillspace`      |             | `boolean` |
 | `flat`          | `flat`           |             | `boolean` |
 | `horizontal`    | `horizontal`     |             | `boolean` |
