@@ -15,6 +15,11 @@
       type="text/css"
     />
 
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+
     <style>
       * {
         box-sizing: border-box;
@@ -26,6 +31,7 @@
 
       body {
         padding: 1rem;
+        font-family: 'Lato', sans-serif;
       }
 
       .options {
@@ -224,6 +230,19 @@
             onchange="toggleBtnColumns(event)"
           />
         </div>
+      </div>
+
+      <div>
+        <label for="btn-align">Align</label>
+        <select
+          name="btn-align"
+          id="btn-align"
+          onchange="onBtnAlignChange(event)"
+        >
+          <option value=""></option>
+          <option value="left">left</option>
+          <option value="right">right</option>
+        </select>
       </div>
 
       <ketchup-btn></ketchup-btn>

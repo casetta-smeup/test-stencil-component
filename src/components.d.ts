@@ -13,6 +13,7 @@ import '@stencil/core';
 export namespace Components {
 
   interface KetchupBtn {
+    'align': string;
     'borderColor': string;
     'buttonClass': string;
     'buttons': any[];
@@ -28,6 +29,7 @@ export namespace Components {
     'transparent': boolean;
   }
   interface KetchupBtnAttributes extends StencilHTMLAttributes {
+    'align'?: string;
     'borderColor'?: string;
     'buttonClass'?: string;
     'buttons'?: any[];
@@ -52,6 +54,7 @@ export namespace Components {
   }
 
   interface KetchupButton {
+    'align': string;
     'borderColor': string;
     'buttonClass': string;
     'fillspace': boolean;
@@ -65,6 +68,7 @@ export namespace Components {
     'transparent': boolean;
   }
   interface KetchupButtonAttributes extends StencilHTMLAttributes {
+    'align'?: string;
     'borderColor'?: string;
     'buttonClass'?: string;
     'fillspace'?: boolean;

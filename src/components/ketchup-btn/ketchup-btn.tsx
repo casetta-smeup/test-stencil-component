@@ -18,7 +18,8 @@ export class KetchupBtn {
   @Prop() transparent = false
   @Prop() showSelection = false
   @Prop() borderColor: string
-  @Prop() textmode: string // should be an enum
+  @Prop() textmode: string
+  @Prop() align: string
   @Prop() columns: number
 
   @State() selectedBtnIndex: number
@@ -65,10 +66,10 @@ export class KetchupBtn {
     let buttonsJsx = null
     let id = 0
     if (buttonsInGrid.length > 0) {
-      buttonsJsx = buttonsInGrid.map((btns, i) => {
+      buttonsJsx = buttonsInGrid.map(btns => {
         const btnsJsx = btns.map(btn => {
           let btnClass = this.buttonClass || ''
-          if (i === this.selectedBtnIndex) {
+          if (id === this.selectedBtnIndex) {
             btnClass += ' btn-selected'
           }
 
@@ -88,6 +89,8 @@ export class KetchupBtn {
                 flat={this.flat}
                 data-id={id++}
                 onBtnClicked={ev => this.onBtnClicked(ev)}
+                align={this.align}
+                class={this.fillspace ? 'fillspace' : ''}
               />
             </td>
           )

@@ -25,6 +25,7 @@ export class KetchupButton {
   @Prop() textmode: string
   @Prop() transparent = false
   @Prop() borderColor: string
+  @Prop() align: string
 
   @Event({
     eventName: 'btnClicked',
@@ -33,19 +34,6 @@ export class KetchupButton {
     bubbles: true
   })
   btnClicked: EventEmitter
-
-  @Watch('fillspace')
-  onFillspaceChange(newValue: string, oldValue: string) {
-    if (newValue === oldValue) {
-      return
-    }
-
-    if (this.fillspace) {
-      this.ketchupButtonEl.classList.add('fillspace')
-    } else {
-      this.ketchupButtonEl.classList.remove('fillspace')
-    }
-  }
 
   @Watch('borderColor')
   onBorderColorChange(newValue: string, oldValue: string) {
@@ -102,6 +90,14 @@ export class KetchupButton {
 
     if (this.fillspace) {
       btnClass += ' fillspace'
+    }
+
+    if (this.align) {
+      if ('right' === this.align) {
+        btnClass += ' align-right'
+      } else if ('left' === this.align) {
+        btnClass += ' align-left'
+      }
     }
 
     btnClass = btnClass.trim()

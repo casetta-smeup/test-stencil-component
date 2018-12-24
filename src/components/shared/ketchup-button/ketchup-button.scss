@@ -66,6 +66,19 @@ ketchup-button {
         text-decoration: underline;
       }
     }
+
+    /* align */
+    &.align-right {
+      text-align: right;
+
+      > .button-icon {
+        float: right;
+      }
+    }
+
+    &.align-left {
+      text-align: left;
+    }
   }
 
   &.fillspace {

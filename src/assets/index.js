@@ -375,6 +375,10 @@ function toggleBtnColumns(event) {
   document.querySelector('ketchup-btn').columns = event.target.value
 }
 
+function onBtnAlignChange(event) {
+  document.querySelector('ketchup-btn').align = event.target.value
+}
+
 // cnd
 // countdown
 document.querySelector('ketchup-cnd').addEventListener('countdownEnded', () => {

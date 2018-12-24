@@ -88,7 +88,7 @@ export class KetchupCnd {
   }
 
   drawText() {
-    this.ctx.font = '25px serif'
+    this.ctx.font = '25px Lato'
     this.ctx.textAlign = 'center'
     this.ctx.textBaseline = 'middle'
     this.ctx.fillStyle = '#369491'
