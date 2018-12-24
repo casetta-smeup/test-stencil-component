@@ -370,3 +370,15 @@ function toggleBtnFlat(event) {
 function toggleBtnShowSelection(event) {
   document.querySelector('ketchup-btn').showSelection = event.target.checked
 }
+
+function toggleBtnColumns(event) {
+  console.log(event)
+}
+
+// cnd
+// countdown
+document.querySelector('ketchup-cnd').addEventListener('countdownEnded', () => {
+  const label = document.querySelector('#cnd-label')
+  console.log(label)
+  document.querySelector('#cnd-label').style.display = 'inline-block'
+})

@@ -42,11 +42,28 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 0.5rem;
       }
+
+      .MAT {
+        display: none;
+      }
+
+      .BTN {
+        display: block;
+      }
+
+      .CND {
+        display: none;
+        align-items: center;
+      }
+
+      #cnd-label {
+        margin-left: 1rem;
+      }
     </style>
   </head>
 
   <body>
-    <div style="display:none;">
+    <div class="MAT" style="display:none;">
       <div class="options">
         <div>
           <label for="rowsize">Number of rows</label>
@@ -82,131 +99,147 @@
       <hr />
     </div>
 
-    <div class="btn-options">
-      <div>
-        <label for="btn-showtext">Show text</label>
-        <input
-          type="checkbox"
-          checked
-          name="btn-showtext"
-          id="btn-showtext"
-          onchange="toggleBtnShowtext(event)"
-        />
+    <div class="BTN">
+      <div class="btn-options">
+        <div>
+          <label for="btn-showtext">Show text</label>
+          <input
+            type="checkbox"
+            checked
+            name="btn-showtext"
+            id="btn-showtext"
+            onchange="toggleBtnShowtext(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-fillspace">Fillspace</label>
+          <input
+            type="checkbox"
+            name="btn-fillspace"
+            id="btn-fillspace"
+            onchange="toggleBtnFillspace(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-horizontal">Horizontal</label>
+          <input
+            type="checkbox"
+            checked
+            name="btn-horizontal"
+            id="btn-horizontal"
+            onchange="toggleBtnHorizontal(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-showicon">Show icon</label>
+          <input
+            type="checkbox"
+            checked
+            name="btn-showicon"
+            id="btn-showicon"
+            onchange="toggleBtnShowicon(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-rounded">Rounded</label>
+          <input
+            type="checkbox"
+            name="btn-rounded"
+            id="btn-rounded"
+            onchange="toggleBtnRounded(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-hinttextmode">TextMode='Hint'</label>
+          <input
+            type="checkbox"
+            name="btn-hinttextmode"
+            id="btn-hinttextmode"
+            onchange="toggleBtnTextModeHint(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-transparent">Transparent</label>
+          <input
+            type="checkbox"
+            name="btn-transparent"
+            id="btn-transparent"
+            onchange="toggleBtnTransparent(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-bordercolor">Border color</label>
+          <input
+            type="color"
+            name="btn-bordercolor"
+            id="btn-bordercolor"
+            onchange="onBorderColorChange(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-buttonclass">Button class</label>
+          <select
+            name="btn-buttonclass"
+            id="btn-buttonclass"
+            onchange="onBorderButtonClassChange(event)"
+          >
+            <option value=""></option>
+            <option value="btn-info">btn-info</option>
+            <option value="btn-danger">btn-danger</option>
+            <option value="btn-warning">btn-warning</option>
+            <option value="btn-selected">btn-selected</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="btn-flat">Flat</label>
+          <input
+            type="checkbox"
+            name="btn-flat"
+            id="btn-flat"
+            onchange="toggleBtnFlat(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-showselection">Show Selection</label>
+          <input
+            type="checkbox"
+            name="btn-showselection"
+            id="btn-showselection"
+            onchange="toggleBtnShowSelection(event)"
+          />
+        </div>
+
+        <div>
+          <label for="btn-columns">Columns</label>
+          <input
+            type="number"
+            name="btn-columns"
+            id="btn-columns"
+            onchange="toggleBtnColumns(event)"
+          />
+        </div>
       </div>
 
-      <div>
-        <label for="btn-fillspace">Fillspace</label>
-        <input
-          type="checkbox"
-          name="btn-fillspace"
-          id="btn-fillspace"
-          onchange="toggleBtnFillspace(event)"
-        />
-      </div>
+      <ketchup-btn></ketchup-btn>
 
-      <div>
-        <label for="btn-horizontal">Horizontal</label>
-        <input
-          type="checkbox"
-          checked
-          name="btn-horizontal"
-          id="btn-horizontal"
-          onchange="toggleBtnHorizontal(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-showicon">Show icon</label>
-        <input
-          type="checkbox"
-          checked
-          name="btn-showicon"
-          id="btn-showicon"
-          onchange="toggleBtnShowicon(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-rounded">Rounded</label>
-        <input
-          type="checkbox"
-          name="btn-rounded"
-          id="btn-rounded"
-          onchange="toggleBtnRounded(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-hinttextmode">TextMode='Hint'</label>
-        <input
-          type="checkbox"
-          name="btn-hinttextmode"
-          id="btn-hinttextmode"
-          onchange="toggleBtnTextModeHint(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-transparent">Transparent</label>
-        <input
-          type="checkbox"
-          name="btn-transparent"
-          id="btn-transparent"
-          onchange="toggleBtnTransparent(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-bordercolor">Border color</label>
-        <input
-          type="color"
-          name="btn-bordercolor"
-          id="btn-bordercolor"
-          onchange="onBorderColorChange(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-buttonclass">Button class</label>
-        <select
-          name="btn-buttonclass"
-          id="btn-buttonclass"
-          onchange="onBorderButtonClassChange(event)"
-        >
-          <option value=""></option>
-          <option value="btn-info">btn-info</option>
-          <option value="btn-danger">btn-danger</option>
-          <option value="btn-warning">btn-warning</option>
-          <option value="btn-selected">btn-selected</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="btn-flat">Flat</label>
-        <input
-          type="checkbox"
-          name="btn-flat"
-          id="btn-flat"
-          onchange="toggleBtnFlat(event)"
-        />
-      </div>
-
-      <div>
-        <label for="btn-showselection">Show Selection</label>
-        <input
-          type="checkbox"
-          name="btn-showselection"
-          id="btn-showselection"
-          onchange="toggleBtnShowSelection(event)"
-        />
-      </div>
+      <p id="btn-label"></p>
     </div>
 
-    <ketchup-btn></ketchup-btn>
+    <div class="CND">
+      <ketchup-cnd value="5"></ketchup-cnd>
 
-    <p id="btn-label"></p>
-
-    <ketchup-cnd />
+      <p id="cnd-label" style="display:none;">Countdown terminato!</p>
+    </div>
 
     <script src="/assets/index.js"></script>
   </body>

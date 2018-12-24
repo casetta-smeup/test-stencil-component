@@ -41,8 +41,13 @@ export namespace Components {
     'transparent'?: boolean;
   }
 
-  interface KetchupCnd {}
-  interface KetchupCndAttributes extends StencilHTMLAttributes {}
+  interface KetchupCnd {
+    'value': number;
+  }
+  interface KetchupCndAttributes extends StencilHTMLAttributes {
+    'onCountdownEnded'?: (event: CustomEvent) => void;
+    'value'?: number;
+  }
 
   interface KetchupButton {
     'borderColor': string;
