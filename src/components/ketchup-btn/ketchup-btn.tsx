@@ -15,10 +15,11 @@ export class KetchupBtn {
   @Prop() horizontal = true
   @Prop() rounded = false
   @Prop() flat = false
-  @Prop() textmode: string // should be an enum
   @Prop() transparent = false
-  @Prop() borderColor: string
   @Prop() showSelection = false
+  @Prop() borderColor: string
+  @Prop() textmode: string // should be an enum
+  @Prop() columns: number
 
   @State() selectedBtnIndex: number
 
@@ -37,31 +38,62 @@ export class KetchupBtn {
   }
 
   render() {
-    let buttonsJsx = null
-    if (this.buttons) {
-      buttonsJsx = this.buttons.map((btn, i) => {
-        let btnClass = this.buttonClass || ''
-        if (i === this.selectedBtnIndex) {
-          btnClass += ' btn-selected'
+    let buttonsInGrid = []
+    if (this.columns && this.columns > 0) {
+      this.buttons.forEach((btn, index) => {
+        const mod = index % this.columns
+
+        if (mod === 0) {
+          // new row
+          buttonsInGrid.push([])
         }
 
-        return (
-          <ketchup-button
-            label={btn.value}
-            iconClass={btn.iconClass}
-            fillspace={this.fillspace}
-            showtext={this.showtext}
-            showicon={this.showicon}
-            rounded={this.rounded}
-            textmode={this.textmode}
-            transparent={this.transparent}
-            borderColor={this.borderColor}
-            buttonClass={btnClass}
-            flat={this.flat}
-            data-id={i}
-            onBtnClicked={ev => this.onBtnClicked(ev)}
-          />
-        )
+        buttonsInGrid[buttonsInGrid.length - 1].push(btn)
+      })
+    } else {
+      if (this.horizontal) {
+        buttonsInGrid[0] = this.buttons
+      } else {
+        buttonsInGrid = this.buttons.map(b => {
+          const arr = []
+          arr.push(b)
+          return arr
+        })
+      }
+    }
+
+    let buttonsJsx = null
+    let id = 0
+    if (buttonsInGrid.length > 0) {
+      buttonsJsx = buttonsInGrid.map((btns, i) => {
+        const btnsJsx = btns.map(btn => {
+          let btnClass = this.buttonClass || ''
+          if (i === this.selectedBtnIndex) {
+            btnClass += ' btn-selected'
+          }
+
+          return (
+            <td>
+              <ketchup-button
+                label={btn.value}
+                iconClass={btn.iconClass}
+                fillspace={this.fillspace}
+                showtext={this.showtext}
+                showicon={this.showicon}
+                rounded={this.rounded}
+                textmode={this.textmode}
+                transparent={this.transparent}
+                borderColor={this.borderColor}
+                buttonClass={btnClass}
+                flat={this.flat}
+                data-id={id++}
+                onBtnClicked={ev => this.onBtnClicked(ev)}
+              />
+            </td>
+          )
+        })
+
+        return <tr>{btnsJsx}</tr>
       })
     }
 
@@ -74,6 +106,10 @@ export class KetchupBtn {
       compClass += ' vertical'
     }
 
-    return <div class={compClass}>{buttonsJsx}</div>
+    return (
+      <table class={compClass}>
+        <tbody>{buttonsJsx}</tbody>
+      </table>
+    )
   }
 }

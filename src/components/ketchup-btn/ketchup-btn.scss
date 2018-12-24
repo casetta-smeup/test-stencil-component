@@ -1,9 +1,17 @@
 ketchup-btn {
   .btn-container {
-    display: flex;
+    border-collapse: collapse;
 
-    > ketchup-button {
-      margin: 3px;
+    tbody {
+      tr {
+        td {
+          padding: 3px;
+
+          > ketchup-button {
+            margin: 3px;
+          }
+        }
+      }
     }
 
     &.fillspace {

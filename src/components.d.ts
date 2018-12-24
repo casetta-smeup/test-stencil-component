@@ -16,6 +16,7 @@ export namespace Components {
     'borderColor': string;
     'buttonClass': string;
     'buttons': any[];
+    'columns': number;
     'fillspace': boolean;
     'flat': boolean;
     'horizontal': boolean;
@@ -30,6 +31,7 @@ export namespace Components {
     'borderColor'?: string;
     'buttonClass'?: string;
     'buttons'?: any[];
+    'columns'?: number;
     'fillspace'?: boolean;
     'flat'?: boolean;
     'horizontal'?: boolean;

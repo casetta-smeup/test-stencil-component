@@ -43,16 +43,12 @@
         grid-gap: 0.5rem;
       }
 
-      .MAT {
-        display: none;
-      }
-
       .BTN {
         display: block;
       }
 
       .CND {
-        display: none;
+        display: flex;
         align-items: center;
       }
 
@@ -63,7 +59,7 @@
   </head>
 
   <body>
-    <div class="MAT" style="display:none;">
+    <div class="MAT">
       <div class="options">
         <div>
           <label for="rowsize">Number of rows</label>
@@ -233,6 +229,8 @@
       <ketchup-btn></ketchup-btn>
 
       <p id="btn-label"></p>
+
+      <hr />
     </div>
 
     <div class="CND">

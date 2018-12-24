@@ -372,7 +372,7 @@ function toggleBtnShowSelection(event) {
 }
 
 function toggleBtnColumns(event) {
-  console.log(event)
+  document.querySelector('ketchup-btn').columns = event.target.value
 }
 
 // cnd
