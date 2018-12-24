@@ -20,6 +20,8 @@
       rel="stylesheet"
     />
 
+    <link href="/assets/css/fullcalendar.min.css" rel="stylesheet" />
+
     <style>
       * {
         box-sizing: border-box;
@@ -42,7 +44,8 @@
         margin: 2rem 0;
       }
 
-      .btn-options {
+      .btn-options,
+      .cal-options {
         margin-bottom: 1rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -97,9 +100,9 @@
       <smeup-mat> </smeup-mat>
 
       <p id="label"></p>
-
-      <hr />
     </div>
+
+    <hr />
 
     <div class="BTN">
       <div class="btn-options">
@@ -278,14 +281,53 @@
       <ketchup-btn></ketchup-btn>
 
       <p id="btn-label"></p>
-
-      <hr />
     </div>
+
+    <hr />
 
     <div class="CND">
       <ketchup-cnd value="5"></ketchup-cnd>
 
       <p id="cnd-label" style="display:none;">Countdown terminato!</p>
+    </div>
+
+    <hr />
+
+    <div class="CAL">
+      <div class="cal-options">
+        <div>
+          <label for="cal-initialdate">Initial date</label>
+          <input
+            type="date"
+            name="cal-initialdate"
+            id="cal-initialdate"
+            onchange="onCalInitialDateChange(event)"
+          />
+        </div>
+
+        <div>
+          <label for="cal-showweek">Show week</label>
+          <input
+            type="checkbox"
+            name="cal-showweek"
+            id="cal-showweek"
+            onchange="toggleCalShowWeek(event)"
+          />
+        </div>
+
+        <div>
+          <label for="cal-shownav">Show navigation</label>
+          <input
+            type="checkbox"
+            name="cal-shownav"
+            id="cal-shownav"
+            onchange="toggleCalShowNav(event)"
+            checked
+          />
+        </div>
+      </div>
+
+      <ketchup-cal></ketchup-cal>
     </div>
 
     <script src="/assets/index.js"></script>

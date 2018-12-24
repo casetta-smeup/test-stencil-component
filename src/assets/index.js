@@ -404,3 +404,16 @@ function toggleBtnStyle() {
 document.querySelector('ketchup-cnd').addEventListener('countdownEnded', () => {
   document.querySelector('#cnd-label').style.display = 'inline-block'
 })
+
+// cal
+function toggleCalShowWeek(event) {
+  document.querySelector('ketchup-cal').showWeek = event.target.checked
+}
+
+function toggleCalShowNav(event) {
+  document.querySelector('ketchup-cal').showNavigation = event.target.checked
+}
+
+function onCalInitialDateChange(event) {
+  document.querySelector('ketchup-cal').initialDate = event.target.value
+}

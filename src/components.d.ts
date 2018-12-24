@@ -47,6 +47,17 @@ export namespace Components {
     'transparent'?: boolean;
   }
 
+  interface KetchupCal {
+    'initialDate': Date;
+    'showNavigation': boolean;
+    'showWeek': false;
+  }
+  interface KetchupCalAttributes extends StencilHTMLAttributes {
+    'initialDate'?: Date;
+    'showNavigation'?: boolean;
+    'showWeek'?: false;
+  }
+
   interface KetchupCnd {
     'value': number;
   }
@@ -105,6 +116,7 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'KetchupBtn': Components.KetchupBtn;
+    'KetchupCal': Components.KetchupCal;
     'KetchupCnd': Components.KetchupCnd;
     'KetchupButton': Components.KetchupButton;
     'SmeupMat': Components.SmeupMat;
@@ -112,6 +124,7 @@ declare global {
 
   interface StencilIntrinsicElements {
     'ketchup-btn': Components.KetchupBtnAttributes;
+    'ketchup-cal': Components.KetchupCalAttributes;
     'ketchup-cnd': Components.KetchupCndAttributes;
     'ketchup-button': Components.KetchupButtonAttributes;
     'smeup-mat': Components.SmeupMatAttributes;
@@ -122,6 +135,12 @@ declare global {
   var HTMLKetchupBtnElement: {
     prototype: HTMLKetchupBtnElement;
     new (): HTMLKetchupBtnElement;
+  };
+
+  interface HTMLKetchupCalElement extends Components.KetchupCal, HTMLStencilElement {}
+  var HTMLKetchupCalElement: {
+    prototype: HTMLKetchupCalElement;
+    new (): HTMLKetchupCalElement;
   };
 
   interface HTMLKetchupCndElement extends Components.KetchupCnd, HTMLStencilElement {}
@@ -144,6 +163,7 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'ketchup-btn': HTMLKetchupBtnElement
+    'ketchup-cal': HTMLKetchupCalElement
     'ketchup-cnd': HTMLKetchupCndElement
     'ketchup-button': HTMLKetchupButtonElement
     'smeup-mat': HTMLSmeupMatElement
@@ -151,6 +171,7 @@ declare global {
 
   interface ElementTagNameMap {
     'ketchup-btn': HTMLKetchupBtnElement;
+    'ketchup-cal': HTMLKetchupCalElement;
     'ketchup-cnd': HTMLKetchupCndElement;
     'ketchup-button': HTMLKetchupButtonElement;
     'smeup-mat': HTMLSmeupMatElement;
