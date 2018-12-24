@@ -48,12 +48,21 @@ export class KetchupCnd {
     const endAngle = this.getEndAngle()
 
     if (endAngle > 0) {
+      // rotating the canvas
+      this.ctx.save()
+      this.ctx.translate(0, 100)
+      this.ctx.rotate((3 * Math.PI) / 2)
+      this.ctx.translate(0, 0)
+
       // draw cirlce
       this.ctx.beginPath()
       this.ctx.lineWidth = 5
       this.ctx.strokeStyle = '#369491'
       this.ctx.arc(50, 50, 45, 0, endAngle)
       this.ctx.stroke()
+
+      // restore
+      this.ctx.restore()
     } else {
       console.log('stopping animate')
       cancelAnimationFrame(this.requestAnimationFrame)
