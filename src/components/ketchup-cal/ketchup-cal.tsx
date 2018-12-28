@@ -4,7 +4,8 @@ import $ from 'jquery'
 import 'fullcalendar'
 
 @Component({
-  tag: 'ketchup-cal'
+  tag: 'ketchup-cal',
+  styleUrl: 'ketchup-cal.scss'
 })
 export class KetchupCal {
   @Prop() showWeek: false
@@ -27,15 +28,28 @@ export class KetchupCal {
 
       events: [
         {
-          title: 'Lol',
-          start: new Date(),
+          title: 'evento colorato tramite color e textColor',
+          start: '2018-12-27',
           color: 'yellow',
           textColor: 'black',
           allDay: true
         },
         {
-          title: 'XD',
-          start: '2018-12-25'
+          title: 'Evento colorato tramite cella G',
+          start: '2018-12-25',
+          className: '-smeup-cell-G-00C30'
+        },
+        {
+          title: 'Evento con start e end',
+          start: '2018-12-28T10:00:00',
+          end: '2018-12-28T12:30:00',
+          allDay: false
+        },
+        {
+          title: 'Icone!',
+          start: '2018-12-29',
+          allDay: false,
+          icons: ['mdi mdi-account', 'mdi mdi-plus']
         }
       ]
     }
@@ -46,6 +60,23 @@ export class KetchupCal {
 
     if (this.initialDate) {
       options.defaultDate = this.initialDate
+    }
+
+    options.eventRender = function(date, element) {
+      if (date.icons) {
+        const content = element[0].querySelector('.fc-content')
+
+        const iconsContainer = document.createElement('div')
+        iconsContainer.classList.add('icons-container')
+
+        date.icons.forEach(icon => {
+          const iconContainer = document.createElement('span')
+          iconContainer.className = 'icon-container ' + icon
+          iconsContainer.appendChild(iconContainer)
+        })
+
+        content.appendChild(iconsContainer)
+      }
     }
 
     $(this.container).fullCalendar(options)
@@ -72,4 +103,6 @@ interface FullCalendarConfig {
   header?: boolean | any
 
   defaultDate?: Date
+
+  eventRender?: any
 }
