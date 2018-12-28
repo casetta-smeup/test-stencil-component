@@ -417,3 +417,9 @@ function toggleCalShowNav(event) {
 function onCalInitialDateChange(event) {
   document.querySelector('ketchup-cal').initialDate = event.target.value
 }
+
+document
+  .querySelector('ketchup-cal')
+  .addEventListener('eventClicked', event => {
+    alert(`Hai cliccato sull'evento: ${event.detail.title}`)
+  })

@@ -54,6 +54,7 @@ export namespace Components {
   }
   interface KetchupCalAttributes extends StencilHTMLAttributes {
     'initialDate'?: Date;
+    'onEventClicked'?: (event: CustomEvent) => void;
     'showNavigation'?: boolean;
     'showWeek'?: false;
   }

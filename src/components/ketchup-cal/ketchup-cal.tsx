@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core'
+import { Component, Event, EventEmitter, Prop } from '@stencil/core'
 
 import $ from 'jquery'
 import 'fullcalendar'
@@ -12,13 +12,17 @@ export class KetchupCal {
   @Prop() initialDate: Date
   @Prop() showNavigation = true
 
-  private container?: HTMLDivElement
+  @Event() eventClicked: EventEmitter
+
+  private container: HTMLDivElement
 
   componentDidLoad() {
     this.loadFullCalendar()
   }
 
   loadFullCalendar() {
+    const self = this
+
     const defaultView = this.showWeek ? 'agendaWeek' : 'month'
 
     $(this.container).fullCalendar('destroy')
@@ -51,7 +55,15 @@ export class KetchupCal {
           allDay: false,
           icons: ['mdi mdi-account', 'mdi mdi-plus']
         }
-      ]
+      ],
+
+      dayClick: function(date) {
+        console.log(date.toDate())
+      },
+
+      eventClick: function(calEvent) {
+        self.eventClicked.emit(calEvent)
+      }
     }
 
     if (!this.showNavigation) {
@@ -105,4 +117,8 @@ interface FullCalendarConfig {
   defaultDate?: Date
 
   eventRender?: any
+
+  eventClick: any
+
+  dayClick: any
 }
