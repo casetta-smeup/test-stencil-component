@@ -24,6 +24,11 @@
   "devDependencies": {
     "@stencil/core": "~0.16.1",
     "@stencil/sass": "^0.1.1",
+    "@types/jest": "23.3.12",
+    "@types/puppeteer": "1.11.1",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "puppeteer": "1.8.0",
     "rimraf": "^2.6.2"
   },
   "license": "MIT"
