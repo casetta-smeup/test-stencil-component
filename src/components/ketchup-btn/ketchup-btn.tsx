@@ -2,7 +2,8 @@ import { Component, Prop, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'ketchup-btn',
-  styleUrl: 'ketchup-btn.scss'
+  styleUrl: 'ketchup-btn.scss',
+  shadow: true
 })
 export class KetchupBtn {
   @Prop() buttons: any[]

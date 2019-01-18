@@ -1,7 +1,8 @@
 import { Component, Event, EventEmitter, Prop } from '@stencil/core'
 
 @Component({
-  tag: 'ketchup-cnd'
+  tag: 'ketchup-cnd',
+  shadow: true
 })
 export class KetchupCnd {
   @Prop() value: number
@@ -120,12 +121,20 @@ export class KetchupCnd {
 
   render() {
     return (
-      <canvas
-        id="canvas"
-        ref={el => (this.canvas = el as HTMLCanvasElement)}
-        height="100"
-        width="100"
-      />
+      <div>
+        <paper-autocomplete
+          class="autocomplete-states"
+          label="Select State"
+          id="input-local"
+          no-label-float
+        />
+        <canvas
+          id="canvas"
+          ref={el => (this.canvas = el as HTMLCanvasElement)}
+          height="100"
+          width="100"
+        />
+      </div>
     )
   }
 }
