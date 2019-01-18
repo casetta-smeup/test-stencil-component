@@ -122,12 +122,6 @@ export class KetchupCnd {
   render() {
     return (
       <div>
-        <paper-autocomplete
-          class="autocomplete-states"
-          label="Select State"
-          id="input-local"
-          no-label-float
-        />
         <canvas
           id="canvas"
           ref={el => (this.canvas = el as HTMLCanvasElement)}

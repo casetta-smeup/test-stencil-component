@@ -423,3 +423,10 @@ document
   .addEventListener('eventClicked', event => {
     alert(`Hai cliccato sull'evento: ${event.detail.title}`)
   })
+
+// autocomplete
+document
+  .querySelector('ketchup-autocomplete')
+  .addEventListener('query', event => {
+    console.log('query', event)
+  })

@@ -12,6 +12,11 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface KetchupAutocomplete {}
+  interface KetchupAutocompleteAttributes extends StencilHTMLAttributes {
+    'onQuery'?: (event: CustomEvent) => void;
+  }
+
   interface KetchupBtn {
     'align': string;
     'borderColor': string;
@@ -116,6 +121,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'KetchupAutocomplete': Components.KetchupAutocomplete;
     'KetchupBtn': Components.KetchupBtn;
     'KetchupCal': Components.KetchupCal;
     'KetchupCnd': Components.KetchupCnd;
@@ -124,6 +130,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'ketchup-autocomplete': Components.KetchupAutocompleteAttributes;
     'ketchup-btn': Components.KetchupBtnAttributes;
     'ketchup-cal': Components.KetchupCalAttributes;
     'ketchup-cnd': Components.KetchupCndAttributes;
@@ -131,6 +138,12 @@ declare global {
     'smeup-mat': Components.SmeupMatAttributes;
   }
 
+
+  interface HTMLKetchupAutocompleteElement extends Components.KetchupAutocomplete, HTMLStencilElement {}
+  var HTMLKetchupAutocompleteElement: {
+    prototype: HTMLKetchupAutocompleteElement;
+    new (): HTMLKetchupAutocompleteElement;
+  };
 
   interface HTMLKetchupBtnElement extends Components.KetchupBtn, HTMLStencilElement {}
   var HTMLKetchupBtnElement: {
@@ -163,6 +176,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'ketchup-autocomplete': HTMLKetchupAutocompleteElement
     'ketchup-btn': HTMLKetchupBtnElement
     'ketchup-cal': HTMLKetchupCalElement
     'ketchup-cnd': HTMLKetchupCndElement
@@ -171,6 +185,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'ketchup-autocomplete': HTMLKetchupAutocompleteElement;
     'ketchup-btn': HTMLKetchupBtnElement;
     'ketchup-cal': HTMLKetchupCalElement;
     'ketchup-cnd': HTMLKetchupCndElement;

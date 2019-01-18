@@ -16,6 +16,7 @@ log.txt
 .vscode/
 .sass-cache/
 .versions/
+bower_components/
 node_modules/
 $RECYCLE.BIN/
 
